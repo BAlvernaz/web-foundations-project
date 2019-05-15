@@ -25,9 +25,17 @@ const data = {
 
 const allPrizes = document.querySelector("#allPrizes")
 
-allPrizes.innerHTML = `
-  <div>
-    ${Object.keys(data.prizes).map(key => `<div>${key}</div><div>${data.prizes[key]}</div></div>`).join('')}</div>`
+const renderPrizes = () => {
+const HTML = `
+   <div id="prizeBlock">
+    ${Object.keys(data.prizes)
+        .map(key =>
+          `
+          <div>${key}</div>
+          <div>${data.prizes[key]}</div>
+          `).join('')}
+  </div>`;
+    allPrizes.innerHTML  = HTML
 
-
-
+}
+renderPrizes()

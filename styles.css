@@ -20,6 +20,9 @@
   border: 2px solid red;
 
 }
+#prizeBlock {
+  display: flex;
+}
 
 #allCustomers {
   display: flex;
