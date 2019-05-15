@@ -1,0 +1,27 @@
+#title {
+  color: dodgerblue;
+  border-bottom: 1px solid dodgerblue;
+}
+
+#prizeTitle {
+  text-align: center;
+  color: dodgerblue;
+
+}
+
+#customersTitle {
+  text-align: center;
+  color: dodgerblue;
+
+}
+
+#allPrizes {
+  display: flex;
+  border: 2px solid red;
+
+}
+
+#allCustomers {
+  display: flex;
+  border: 2px solid blue;
+}
