@@ -14,17 +14,14 @@ display: flex;
 flex-direction: column;
 border: 2px solid purple;
 text-align: center;
-width: 200px;
-height: 200px;
 }
-
-#name {
-  display: flex;
-}
-
-#customerCard  {
+#allCustomers {
   display: flex;
   justify-content: space-around;
-  border: 4px solid blue
 }
-]
+#customerCards {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ border: 2px solid
+}

@@ -33,9 +33,11 @@ const HTML = `
         .map(key =>
           `
             <div>
-              <div id="prizeName">${key}
+              <div>
+                ${key}
               </div>
-              <div id="amoutOf">${data.prizes[key]}
+              <div class="value" id=${key}>
+                ${data.prizes[key]}
               </div>
             </div>
                 `).join('')}
@@ -49,22 +51,50 @@ const allCustomers = document.querySelector('#allCustomers');
 
 const renderCustomers = () => {
   const HTML =
-  `
-    <div id="customerCard">
-      ${Object.keys(data.customers)
-        .map(name =>
-          `
-            <div>
-              <div>
-                ${name}
-              </div>
-              <div>
-                ${Object.keys(data.customers[name]).join('')}
-              </div>
-            </div>`).join('')}
-    </div>
+  ` ${Object.keys(data.customers).map(name => `
+
+        <div id="customerCards">
+          <div>
+          ${name}
+          </div>
+          ${Object.keys(data.customers[name]).map(prize => `
+          <div>
+            <button type="button" class="minus" id=${prize}>-</button>
+            ${[prize]}
+            ${data.customers[name][prize]}
+            <button type="button" class="plus" id=${prize}>+</button>
+          </div>
+          `).join('')}
+        </div>
+
+  `).join('')}
   `
   allCustomers.innerHTML = HTML
 }
 
 renderCustomers()
+
+const minusButtons = document.querySelectorAll('.minus')
+
+const plushandler = (event) => {
+  if (event.target.tagName === 'BUTTON' && event.target.className === 'plus') {
+    data.prizes[event.target.id] -= 1
+      if (data.prizes[event.target.id] === 0) {
+     //disable all minus class buttons
+     minusButtons.disabled = true
+    }
+  }
+
+}
+
+const minushandler = (event) => {
+  if (event.target.tagName === 'BUTTON' && event.target.className === 'minus') {
+    data.prizes[event.target.id] += 1
+
+  }
+  renderPrizes()
+  renderCustomers()
+}
+
+allCustomers.addEventListener('click', plushandler)
+allCustomers.addEventListener('click', minushandler)
