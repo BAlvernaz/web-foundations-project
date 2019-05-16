@@ -78,17 +78,13 @@ const plushandler = (event) => {
   if (event.target.tagName === 'BUTTON' && event.target.classList[0] === `plus`) {
     data.prizes[event.target.id] -= 1
     data.customers[event.target.classList[1]][event.target.id] += 1
+    renderPrizes()
+    renderCustomers()
   }
-  renderPrizes()
-  renderCustomers()
+
 }
-  const allMinus = document.querySelectorAll('.minus')
 const minushandler = (event) => {
   if (event.target.tagName === 'BUTTON' && event.target.classList[0] === `minus`) {
-    if (data.prizes[event.target.id] === 0) {
-      allMinus.disable = true
-
-    }
     data.prizes[event.target.id] += 1
     data.customers[event.target.classList[1]][event.target.id] -= 1
     renderPrizes()
