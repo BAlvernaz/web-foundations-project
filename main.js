@@ -59,10 +59,10 @@ const renderCustomers = () => {
           </div>
           ${Object.keys(data.customers[name]).map(prize => `
           <div>
-            <button type="button" class="minus" id=${prize}>-</button>
+            <button type="button" class="minus ${name}" id=${prize} ${data.customers[name][prize] === 0 ? 'disabled' : ''}>-</button>
             ${[prize]}
             ${data.customers[name][prize]}
-            <button type="button" class="plus" id=${prize}>+</button>
+            <button type="button" class='plus ${name}'  id=${prize} ${data.prizes[prize] === 0 ? 'disabled' : ''}>+</button>
           </div>
           `).join('')}
         </div>
@@ -74,27 +74,28 @@ const renderCustomers = () => {
 
 renderCustomers()
 
-const minusButtons = document.querySelectorAll('.minus')
-
 const plushandler = (event) => {
-  if (event.target.tagName === 'BUTTON' && event.target.className === 'plus') {
+  if (event.target.tagName === 'BUTTON' && event.target.classList[0] === `plus`) {
     data.prizes[event.target.id] -= 1
-      if (data.prizes[event.target.id] === 0) {
-     //disable all minus class buttons
-     minusButtons.disabled = true
-    }
-  }
-
-}
-
-const minushandler = (event) => {
-  if (event.target.tagName === 'BUTTON' && event.target.className === 'minus') {
-    data.prizes[event.target.id] += 1
-
+    data.customers[event.target.classList[1]][event.target.id] += 1
   }
   renderPrizes()
   renderCustomers()
 }
+  const allMinus = document.querySelectorAll('.minus')
+const minushandler = (event) => {
+  if (event.target.tagName === 'BUTTON' && event.target.classList[0] === `minus`) {
+    if (data.prizes[event.target.id] === 0) {
+      allMinus.disable = true
+
+    }
+    data.prizes[event.target.id] += 1
+    data.customers[event.target.classList[1]][event.target.id] -= 1
+    renderPrizes()
+    renderCustomers()
+  }
+
+  }
 
 allCustomers.addEventListener('click', plushandler)
 allCustomers.addEventListener('click', minushandler)
