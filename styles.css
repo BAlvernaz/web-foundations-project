@@ -1,19 +1,36 @@
-
-
-#allPrizes {
-  border: 2px solid red;
+h1 {
+  color: dodgerblue;
+  border-bottom: 2px solid;
 }
+
+h2 {
+  color: dodgerblue;
+  text-align: center;
+}
+
 #prizeBlock {
  display: flex;
  justify-content: space-around;
- border: 3px solid green;
+}
+
+#prizeName {
+  border-bottom: 1px solid black;
+  background-color: dodgerblue;
+  flex: 1;
+  color: white;
+}
+
+.value {
+  flex: 1;
 }
 
 #prizeBlock > div {
 display: flex;
 flex-direction: column;
-border: 2px solid purple;
 text-align: center;
+border: 1px solid dodgerblue;
+width: 100px;
+height: 100px;
 }
 #allCustomers {
   display: flex;
@@ -22,6 +39,48 @@ text-align: center;
 #customerCards {
  display: flex;
  flex-direction: column;
+ justify-content: space-around;
  align-items: center;
- border: 2px solid
+ border: 2px solid dodgerblue;
+ width: 200px;
+ height: 200px;
 }
+
+button {
+  background-color: dodgerblue;
+  color: white;
+}
+
+button:disabled {
+  background-color: grey;
+}
+
+@media screen and (max-width: 550px) {
+  #prizeBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+   }
+
+  #allCustomers {
+    display: flex;
+    flex-direction: column
+  }
+  #prizeBlock > div {
+    display: flex;
+    text-align: center;
+    border: 1px solid dodgerblue;
+    width: 100px;
+    height: 100px;
+}
+
+#customerCards {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border: 2px solid dodgerblue;
+  width: 200px;
+  height: 200px;
+ }
+

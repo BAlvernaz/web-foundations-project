@@ -33,7 +33,7 @@ const HTML = `
         .map(key =>
           `
             <div>
-              <div>
+              <div id="prizeName">
                 ${key}
               </div>
               <div class="value" id=${key}>
