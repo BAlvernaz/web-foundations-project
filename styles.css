@@ -7,7 +7,9 @@ h2 {
   color: dodgerblue;
   text-align: center;
 }
-
+/* 
+Awesome use of FlexBox.
+ */
 #prizeBlock {
  display: flex;
  justify-content: space-around;
@@ -54,7 +56,9 @@ button {
 button:disabled {
   background-color: grey;
 }
-
+/* 
+STELLAR! Media queries, man!  This skill is very valuable in today's mobile world.
+ */
 @media screen and (max-width: 550px) {
   #prizeBlock {
     display: flex;

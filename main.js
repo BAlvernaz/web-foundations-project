@@ -23,9 +23,15 @@ const data = {
   }
 };
 
+/* 
+Great job setting up your template strings!
+ */
 // eslint-disable-next-line quotes
 const allPrizes = document.querySelector('#allPrizes');
 
+/* 
+I'm glad you're using arrow functions!  It's the latest and greatest in JS Syntax!
+ */
 const renderPrizes = () => {
 const HTML = `
    <div id="prizeBlock">
@@ -45,12 +51,17 @@ const HTML = `
     allPrizes.innerHTML  = HTML
 
 }
+// good rendering on first load.
 renderPrizes()
 
 const allCustomers = document.querySelector('#allCustomers');
 
 const renderCustomers = () => {
   const HTML =
+  /* 
+  Good job with this!  
+  The way we have to loop over the object is a tough thing to do!  Good job, keep up the good work!
+   */
   ` ${Object.keys(data.customers).map(name => `
 
         <div id="customerCards">
@@ -71,13 +82,14 @@ const renderCustomers = () => {
   `
   allCustomers.innerHTML = HTML
 }
-
+// good rendering on first load.
 renderCustomers()
 
 const plushandler = (event) => {
   if (event.target.tagName === 'BUTTON' && event.target.classList[0] === `plus`) {
     data.prizes[event.target.id] -= 1
     data.customers[event.target.classList[1]][event.target.id] += 1
+    // Nice. Rembembered to render on any update.
     renderPrizes()
     renderCustomers()
   }
@@ -87,11 +99,15 @@ const minushandler = (event) => {
   if (event.target.tagName === 'BUTTON' && event.target.classList[0] === `minus`) {
     data.prizes[event.target.id] += 1
     data.customers[event.target.classList[1]][event.target.id] -= 1
+    // Nice. Rembembered to render on any update.
     renderPrizes()
     renderCustomers()
   }
 
   }
 
+  /* 
+  Great job with Event hanlders! Take a look at Eric's solution. These could be done in one function instead of two, and just using your conditionals you've already set up.  That might be a little more DRY (don't repeat yourself)
+   */
 allCustomers.addEventListener('click', plushandler)
 allCustomers.addEventListener('click', minushandler)
